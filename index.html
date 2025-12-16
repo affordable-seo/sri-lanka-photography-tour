@@ -626,6 +626,40 @@
             margin-right: auto;
         }
         
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #005a93 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            font-size: 1.4rem;
+            color: white;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0;
+        }
+        
+        .footer-heart {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin: 0 5px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
         /* Responsive Adjustments */
         @media (max-width: 992px) {
             h1 {
@@ -634,6 +668,10 @@
             
             h2 {
                 font-size: 2.2rem;
+            }
+            
+            .footer-content p {
+                font-size: 1.3rem;
             }
         }
         
@@ -666,6 +704,14 @@
             .price {
                 font-size: 2.8rem;
             }
+            
+            .footer-content p {
+                font-size: 1.2rem;
+            }
+            
+            footer {
+                padding: 50px 20px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -687,6 +733,19 @@
             .pricing-highlight {
                 flex-direction: column;
                 gap: 20px;
+            }
+            
+            .footer-content p {
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
+            
+            footer {
+                padding: 40px 15px;
+            }
+            
+            .footer-heart {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -875,7 +934,12 @@
         </div>
     </section>
 
-    <!-- REMOVED: Footer Section -->
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>Crafted for photographers who chase authentic moments in Sri Lanka <span class="footer-heart">❤️</span></p>
+        </div>
+    </footer>
 
     <!-- JavaScript -->
     <script>
