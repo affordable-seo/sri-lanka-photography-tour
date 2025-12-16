@@ -291,15 +291,6 @@
             margin-bottom: 10px;
         }
         
-        .category-count {
-            color: var(--gray);
-            font-size: 1rem;
-            background: rgba(0, 119, 190, 0.1);
-            padding: 5px 15px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-        
         /* Slideshow Container - FIXED SIZE */
         .slideshow-container {
             width: 100%;
@@ -635,25 +626,6 @@
             margin-right: auto;
         }
         
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--primary) 0%, #005a93 100%);
-            color: white; /* CHANGED: Added white text color */
-            text-align: center;
-            padding: 40px 20px;
-        }
-        
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .footer-heart {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin: 0 5px;
-        }
-        
         /* Responsive Adjustments */
         @media (max-width: 992px) {
             h1 {
@@ -749,7 +721,8 @@
                 </div>
             </div>
             
-            <a href="#booking" class="btn">Reserve Your Spot Now</a>
+            <!-- UPDATED: Hero CTA Button opens in new window -->
+            <a href="https://www.angkorphotographytours.com/sri-lanka-photography-tour/" target="_blank" rel="noopener noreferrer" class="btn">Reserve Your Spot Now</a>
         </div>
     </section>
     
@@ -784,7 +757,7 @@
                             <i class="fas fa-place-of-worship"></i>
                         </div>
                         <h3 class="category-title">Ancient Temples</h3>
-                        <p class="category-count">12 pictures</p>
+                        <!-- REMOVED: Picture count subtitle -->
                     </div>
                     
                     <div class="category-item" data-category="people" data-slides="13">
@@ -792,7 +765,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <h3 class="category-title">People & Culture</h3>
-                        <p class="category-count">13 pictures</p>
+                        <!-- REMOVED: Picture count subtitle -->
                     </div>
                     
                     <div class="category-item" data-category="landscape" data-slides="11">
@@ -800,7 +773,7 @@
                             <i class="fas fa-mountain"></i>
                         </div>
                         <h3 class="category-title">Landscape & Nature</h3>
-                        <p class="category-count">11 pictures</p>
+                        <!-- REMOVED: Picture count subtitle -->
                     </div>
                     
                     <div class="category-item" data-category="wildlife" data-slides="6">
@@ -808,12 +781,12 @@
                             <i class="fas fa-paw"></i>
                         </div>
                         <h3 class="category-title">Wildlife</h3>
-                        <p class="category-count">6 pictures</p>
+                        <!-- REMOVED: Picture count subtitle -->
                     </div>
                 </div>
                 
                 <!-- Slideshow Container -->
-                <div class="slideshow-container" id="slideshow">
+                <div class="slideshow-container active" id="slideshow">
                     <div class="slideshow-wrapper">
                         <!-- Slides will be dynamically inserted here -->
                     </div>
@@ -824,7 +797,7 @@
                     
                     <!-- Current category indicator -->
                     <div class="slideshow-category" id="slideshow-category">
-                        <span id="current-category">Ancient Temples</span> • <span id="current-slide">1</span>/<span id="total-slides">12</span>
+                        <span id="current-category">People & Culture</span> • <span id="current-slide">1</span>/<span id="total-slides">13</span>
                     </div>
                 </div>
                 
@@ -893,20 +866,16 @@
                 Join an exclusive group of photographers on this immersive journey through Sri Lanka's most photogenic locations. Limited to just 4 participants for personalized guidance.
             </p>
             
-            <a href="#" class="btn">Secure Your Spot with 30% Deposit</a>
+            <!-- UPDATED: Booking CTA Button opens in new window -->
+            <a href="https://www.angkorphotographytours.com/sri-lanka-photography-tour/" target="_blank" rel="noopener noreferrer" class="btn">Secure Your Spot with 30% Deposit</a>
             
             <div class="booking-notice">
                 30% deposit secures your spot • Full refund if cancelled 3 months before departure
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer>
-    <div class="footer-content" style="color: white;">
-        <p>Crafted for photographers who chase authentic moments in Sri Lanka <span class="footer-heart">❤️</span></p>
-    </div>
-</footer>
+
+    <!-- REMOVED: Footer Section -->
 
     <!-- JavaScript -->
     <script>
@@ -923,7 +892,7 @@
             const totalSlidesElement = document.getElementById('total-slides');
             
             let currentSlide = 0;
-            let currentCategory = 'temples';
+            let currentCategory = 'people'; // CHANGED: Default to 'people' instead of 'temples'
             let slideInterval;
             let touchStartX = 0;
             let touchEndX = 0;
@@ -999,7 +968,8 @@
             };
             
             // Initialize the slideshow with default category
-            initializeSlideshow('temples');
+            initializeSlideshow('people'); // CHANGED: Default to 'people' instead of 'temples'
+            startSlideShow(); // Start auto rotation
             
             // Set up category click handlers
             categoryItems.forEach(item => {
@@ -1014,7 +984,7 @@
                     // Initialize the slideshow with selected category
                     initializeSlideshow(category);
                     
-                    // Make slideshow visible
+                    // Make slideshow visible (already visible but ensure it)
                     slideshow.classList.add('active');
                     
                     // Start auto rotation
@@ -1187,10 +1157,9 @@
                 }
             });
             
-            // Initialize slideshow as hidden
-            slideshow.classList.remove('active');
+            // Initialize slideshow - show People & Culture by default
+            // Slideshow is already set to active in HTML
         });
     </script>
 </body>
 </html>
-
