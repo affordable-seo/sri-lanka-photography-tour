@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Lanka Photography Tour 2026: 13-Day Expedition with Laurent Dambies</title>
     <meta name="description" content="Join photographer Laurent Dambies on a 13-day exclusive tour. Capture Sri Lanka's essence across 6 destinations in a small group. Reserve your spot for April 2026.">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com/ajax/libs">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
@@ -95,6 +95,7 @@
             font-weight: 700;
         }
         
+        /* Button Styles */
         .btn {
             display: inline-block;
             padding: 15px 30px;
@@ -117,6 +118,7 @@
             box-shadow: 0 6px 20px rgba(217, 4, 41, 0.4);
         }
         
+        /* Hero Section */
         .hero {
             height: 100vh;
             min-height: 700px;
@@ -166,7 +168,7 @@
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            background: rgba(76, 154, 42, 0.3);
+            background: rgba(76, 154, 42, 0.3); /* CHANGED: #4C9A2A with transparency */
             width: 80px;
             height: 80px;
             display: flex;
@@ -174,8 +176,7 @@
             justify-content: center;
             border-radius: 50%;
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(76, 154, 42, 0.5);
-            animation: float 3s ease-in-out infinite;
+            border: 1px solid rgba(76, 154, 42, 0.5); /* CHANGED: #4C9A2A with transparency */
         }
         
         .feature-text {
@@ -183,20 +184,49 @@
             font-weight: 600;
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-
+        
+        /* Icon Floating Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-
-        .feature:nth-child(2) .feature-icon { animation-delay: 0.5s; }
-        .feature:nth-child(3) .feature-icon { animation-delay: 1s; }
-
-        .about { background: white; }
-        .about-content { max-width: 900px; margin: 0 auto; }
         
-        .gallery { background: linear-gradient(135deg, #f8f9fa 0%, #e8f4ff 100%); }
-        .gallery-container { max-width: 1000px; margin: 0 auto; }
+        .feature-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .feature:nth-child(1) .feature-icon {
+            animation-delay: 0s;
+        }
+        
+        .feature:nth-child(2) .feature-icon {
+            animation-delay: 0.5s;
+        }
+        
+        .feature:nth-child(3) .feature-icon {
+            animation-delay: 1s;
+        }
+        
+        /* About Section */
+        .about {
+            background: white;
+            position: relative;
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery Section - UPDATED */
+        .gallery {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4ff 100%);
+        }
+        
+        .gallery-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
         
         .text-center {
             text-align: center;
@@ -205,14 +235,23 @@
             color: #666;
             font-size: 1.2rem;
         }
-
+        
+        /* Category Grid - True 2x2 layout */
         .category-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
             gap: 30px;
             margin-bottom: 60px;
         }
-
+        
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, auto);
+            }
+        }
+        
         .category-item {
             background: white;
             border-radius: 15px;
@@ -228,31 +267,65 @@
             justify-content: center;
             min-height: 200px;
         }
-
+        
         .category-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
             border-color: var(--secondary);
             background: linear-gradient(135deg, white 0%, #f0f9ff 100%);
         }
-
-        .category-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
-
+        
+        .category-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-item:hover .category-icon {
+            transform: scale(1.1);
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Slideshow Container - FIXED SIZE */
         .slideshow-container {
             width: 100%;
             max-width: 1200px;
-            height: 600px;
+            height: 800px;
             margin: 0 auto;
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            display: none;
             background: #000;
         }
-
-        .slideshow-wrapper { width: 100%; height: 100%; position: relative; }
-
+        
+        .slideshow-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slideshow-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
         .slide {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             opacity: 0;
@@ -261,40 +334,71 @@
             align-items: center;
             justify-content: center;
         }
-
-        .slide.active { opacity: 1; z-index: 1; }
-        .slide-img { width: 100%; height: 100%; object-fit: cover; }
-
+        
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Slideshow Category Indicator */
         .slideshow-category {
             position: absolute;
-            bottom: 0;
+            bottom: 20px;
+            left: 0;
             width: 100%;
             text-align: center;
             color: white;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
             backdrop-filter: blur(5px);
             z-index: 10;
         }
-
+        
+        /* Navigation Buttons */
         .slideshow-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
+            font-size: 1.8rem;
             cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 10;
-            font-size: 1.5rem;
         }
-
-        .prev { left: 20px; }
-        .next { right: 20px; }
-
+        
+        .slideshow-nav:hover {
+            background: rgba(0, 119, 190, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev {
+            left: 25px;
+        }
+        
+        .next {
+            right: 25px;
+        }
+        
+        /* Dots Indicator */
         .slideshow-dots {
             display: flex;
             justify-content: center;
@@ -302,26 +406,128 @@
             margin-top: 25px;
             flex-wrap: wrap;
         }
-
+        
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: #ccc;
+            background: #ddd;
             cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
-
-        .dot.active { background: var(--primary); transform: scale(1.2); }
-
+        
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+            border-color: white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        .dot:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Scaling for Slideshow */
+        @media (max-width: 1200px) {
+            .slideshow-container {
+                max-width: 900px;
+                height: 600px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .slideshow-container {
+                max-width: 700px;
+                height: 467px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slideshow-container {
+                max-width: 100%;
+                height: 500px;
+                border-radius: 10px;
+            }
+            
+            .slideshow-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .prev {
+                left: 15px;
+            }
+            
+            .next {
+                right: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .slideshow-container {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slideshow-container {
+                height: 300px;
+            }
+            
+            .slideshow-category {
+                font-size: 1rem;
+                padding: 8px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .slideshow-container {
+                height: 250px;
+            }
+            
+            .slideshow-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Pricing Section */
         .pricing {
             background: linear-gradient(rgba(0, 119, 190, 0.85), rgba(0, 119, 190, 0.85)), 
                         url('/images/sri-lanka-photo-tour-train-1.webp') no-repeat center center/cover;
             color: white;
             text-align: center;
         }
-
-        .pricing h2, .pricing-lead { color: white !important; }
-        .pricing-highlight { display: flex; justify-content: center; gap: 30px; margin: 40px 0; flex-wrap: wrap; }
+        
+        .pricing h2 {
+            color: white;
+        }
+        
+        .pricing h2:after {
+            background: white;
+        }
+        
+        .pricing-lead {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white !important;
+        }
+        
+        .pricing-highlight {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
         
         .price-box {
             background: rgba(255, 255, 255, 0.15);
@@ -331,59 +537,318 @@
             min-width: 200px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        .price { font-size: 3rem; font-weight: 700; }
-        .included-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .included, .excluded { background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 15px; text-align: left; }
         
-        ul { list-style: none; }
-        li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .included li:before { content: '✓'; position: absolute; left: 0; color: var(--secondary); }
-        .excluded li:before { content: '✕'; position: absolute; left: 0; color: #ff6b6b; }
-
-        .booking { text-align: center; background: white; }
-        .booking-notice { 
-            background: rgba(217, 4, 41, 0.1); 
-            padding: 15px; 
-            border-radius: 10px; 
-            display: inline-block; 
-            margin-top: 20px; 
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .price-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .included-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+        
+        .included, .excluded {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+        
+        .included h3, .excluded h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .included h3 i {
+            color: var(--secondary);
+        }
+        
+        .excluded h3 i {
+            color: #ff6b6b;
+        }
+        
+        .included ul, .excluded ul {
+            list-style: none;
+        }
+        
+        .included li, .excluded li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .included li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .excluded li:before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        /* Booking Section */
+        .booking {
+            background: white;
+            text-align: center;
+        }
+        
+        .booking-notice {
+            font-size: 1.2rem;
             color: var(--accent);
             font-weight: 600;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(217, 4, 41, 0.1);
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
+        
+        /* Footer */
         footer {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, #005a93 100%);
             color: white;
             text-align: center;
-            padding: 40px;
+            padding: 60px 20px;
+            border-top: 5px solid var(--secondary);
         }
-
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            font-size: 1.4rem;
+            color: white;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0;
+        }
+        
+        .footer-heart {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin: 0 5px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content p {
+                font-size: 1.3rem;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .category-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.2rem; }
-            .slideshow-container { height: 400px; }
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .glass-box {
+                padding: 30px 20px;
+            }
+            
+            .features {
+                gap: 20px;
+            }
+            
+            .feature {
+                width: 120px;
+            }
+            
+            .price-box {
+                min-width: 150px;
+                padding: 20px;
+            }
+            
+            .price {
+                font-size: 2.8rem;
+            }
+            
+            .footer-content p {
+                font-size: 1.2rem;
+            }
+            
+            footer {
+                padding: 50px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 15px;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .feature {
+                width: 100%;
+                max-width: 200px;
+            }
+            
+            .pricing-highlight {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-content p {
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
+            
+            footer {
+                padding: 40px 15px;
+            }
+            
+            .footer-heart {
+                font-size: 1.4rem;
+            }
         }
     </style>
-    
-    <script type="application/ld+json">
+     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Sri Lanka Photography Tour 2026",
+"image": "https://sri-lanka-photography-tour.vercel.app/images/sri-lanka-photo-tour-people-1.webp",
+  "description": "A comprehensive 13-day photography adventure led by Laurent Dambies, exploring ancient temples, authentic local life and beautiful landscapes of Sri Lanka",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "5700",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-01-01",        
+    "priceValidUntil": "2026-12-31"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "3"
+  },
+  "brand": {
+    "@type": "Organization",
+    "name": "Angkor Photography Tours"
+  },
+  "provider": {
+    "@type": "Person",
+    "name": "Laurent Dambies",
+    "jobTitle": "Photography Guide",
+    "sameAs": []
+  },
+  "tourDestination": [
     {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Sri Lanka Photography Tour 2026",
-      "image": "https://sri-lanka-photography-tour.vercel.app/images/sri-lanka-photo-tour-people-1.webp",
-      "description": "A comprehensive 13-day photography adventure led by Laurent Dambies.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "5700",
-        "availability": "https://schema.org/InStock"
+      "@type": "TouristAttraction",
+      "name": "Lion's rock",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sigiriya",
+        "addressRegion": "Central Province",
+        "addressCountry": "LK"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "Colombo",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Colombo",
+        "addressRegion": "Western Province",
+        "addressCountry": "LK"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "Negombo",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Negombo",
+        "addressRegion": "Western Province",
+        "addressCountry": "LK"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "Kandy",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kandy",
+        "addressRegion": "Central Province",
+        "addressCountry": "LK"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "Galle",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Galle",
+        "addressRegion": "Southern Province",
+        "addressCountry": "LK"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "Haputale",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Haputale",
+        "addressRegion": "Uva Province",
+        "addressCountry": "LK"
       }
     }
-    </script>
+  ]
+}
+</script>
 </head>
 <body>
-
+    <!-- Hero Section -->
     <section class="hero">
         <div class="glass-box">
             <h1>Sri Lanka Photography Tour 2026</h1>
@@ -391,189 +856,485 @@
             
             <div class="features">
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
-                    <div class="feature-text">13 Days • April 14-26 2026</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="feature-text">13 Days • April 14th to 26th 2026</div>
                 </div>
+                
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
                     <div class="feature-text">6 Destinations</div>
                 </div>
+                
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-camera"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
                     <div class="feature-text">Max 4 Photographers</div>
                 </div>
             </div>
+            
+            <!-- UPDATED: Hero CTA Button opens in new window -->
             <a href="https://www.angkorphotographytours.com/sri-lanka-photography-tour/" target="_blank" rel="noopener noreferrer" class="btn">Reserve Your Spot Now</a>
         </div>
     </section>
-
+    
+    <!-- About Section -->
     <section class="about">
         <div class="container">
             <h2>Capture Sri Lanka Through Your Lens</h2>
+            
             <div class="about-content">
-                <p>This 13-day <a href="https://www.angkorphotographytours.com/sri-lanka-photography-tour">Sri Lanka photography tour</a> presents photographers with an extraordinary range of subjects—from energetic markets to mist-covered tea estates.</p>
-                <p>Whether your passion lies in <b>documentary street photography</b>, landscapes, or wildlife, Sri Lanka delivers as an unmatched destination.</p>
+                <p>This 13-day <a href="https://www.angkorphotographytours.com/sri-lanka-photography-tour">Sri Lanka photography tour </a> presents photographers with an extraordinary range of subjects—from the <b>energetic streets and colorful markets</b> of Colombo and Kandy to <b>mist-covered highlands</b> carpeted in emerald tea estates. Discover <b>secluded coastlines</b>, traditional fishermen working tirelessly, <b>ancient temples</b>, thriving wildlife, and sweeping mountain vistas.</p>
+                
+                <p>The island's rich multicultural tapestry brings <b>vibrant festivals and celebrations</b> throughout the year, creating exceptional photographic moments. With 2026 shaping up to be a remarkable year for travel to Sri Lanka, now is the ideal time to explore beyond the crowded tourist hotspots like Ella's Nine Arch Bridge and uncover <b>hidden gems</b> waiting to be photographed.</p>
+                
+                <p>Whether your passion lies in <b>documentary street photography</b>, portraiture, landscapes, architectural details, or wildlife, Sri Lanka delivers as an <b>unmatched photography destination</b>.</p>
             </div>
         </div>
     </section>
-
+    
+    <!-- Gallery Section -->
     <section class="gallery">
         <div class="container">
             <h2>Sri Lanka Photo Gallery</h2>
-            <p class="text-center">Click on a category below to explore the photo gallery</p>
+            <p class="text-center">
+                Click on a category below to explore the photo gallery
+            </p>
             
-            <div class="category-grid">
-                <div class="category-item" data-category="temples" data-slides="12">
-                    <div class="category-icon"><i class="fas fa-place-of-worship"></i></div>
-                    <h3 class="category-title">Ancient Temples</h3>
+            <div class="gallery-container">
+                <!-- Category Grid - 2x2 layout -->
+                <div class="category-grid">
+                    <div class="category-item" data-category="temples" data-slides="12">
+                        <div class="category-icon">
+                            <i class="fas fa-place-of-worship"></i>
+                        </div>
+                        <h3 class="category-title">Ancient Temples</h3>
+                        <!-- REMOVED: Picture count subtitle -->
+                    </div>
+                    
+                    <div class="category-item" data-category="people" data-slides="13">
+                        <div class="category-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="category-title">People & Culture</h3>
+                        <!-- REMOVED: Picture count subtitle -->
+                    </div>
+                    
+                    <div class="category-item" data-category="landscape" data-slides="11">
+                        <div class="category-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3 class="category-title">Landscape & Nature</h3>
+                        <!-- REMOVED: Picture count subtitle -->
+                    </div>
+                    
+                    <div class="category-item" data-category="wildlife" data-slides="6">
+                        <div class="category-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3 class="category-title">Wildlife</h3>
+                        <!-- REMOVED: Picture count subtitle -->
+                    </div>
                 </div>
-                <div class="category-item" data-category="people" data-slides="13">
-                    <div class="category-icon"><i class="fas fa-users"></i></div>
-                    <h3 class="category-title">People & Culture</h3>
+                
+                <!-- Slideshow Container -->
+                <div class="slideshow-container active" id="slideshow">
+                    <div class="slideshow-wrapper">
+                        <!-- Slides will be dynamically inserted here -->
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <button class="slideshow-nav prev" aria-label="Previous slide">&#10094;</button>
+                    <button class="slideshow-nav next" aria-label="Next slide">&#10095;</button>
+                    
+                    <!-- Current category indicator -->
+                    <div class="slideshow-category" id="slideshow-category">
+                        <span id="current-category">People & Culture</span> • <span id="current-slide">1</span>/<span id="total-slides">13</span>
+                    </div>
                 </div>
-                <div class="category-item" data-category="landscape" data-slides="11">
-                    <div class="category-icon"><i class="fas fa-mountain"></i></div>
-                    <h3 class="category-title">Landscape & Nature</h3>
-                </div>
-                <div class="category-item" data-category="wildlife" data-slides="6">
-                    <div class="category-icon"><i class="fas fa-paw"></i></div>
-                    <h3 class="category-title">Wildlife</h3>
+                
+                <!-- Dots Indicator -->
+                <div class="slideshow-dots" id="dots-container">
+                    <!-- Dots will be dynamically generated -->
                 </div>
             </div>
-
-            <div class="slideshow-container" id="slideshow">
-                <div class="slideshow-wrapper" id="slides-wrapper"></div>
-                <button class="slideshow-nav prev">&#10094;</button>
-                <button class="slideshow-nav next">&#10095;</button>
-                <div class="slideshow-category">
-                    <span id="current-category">People & Culture</span> • 
-                    <span id="current-slide">1</span>/<span id="total-slides">13</span>
-                </div>
-            </div>
-            <div class="slideshow-dots" id="dots-container"></div>
         </div>
     </section>
-
+    
+    <!-- Pricing Section -->
     <section class="pricing">
         <div class="container">
-            <h2>Pricing & Inclusions</h2>
+            <h2>Ready to Capture Sri Lanka?</h2>
+            
+            <p class="pricing-lead">Only 4 spots available for this exclusive photography expedition. Secure your place and transform your travel photography forever.</p>
+            
             <div class="pricing-highlight">
                 <div class="price-box">
                     <div class="price">$5,700</div>
-                    <div>Per Photographer</div>
+                    <div class="price-label">Per Photographer</div>
                 </div>
+                
                 <div class="price-box">
                     <div class="price">13</div>
-                    <div>Days</div>
+                    <div class="price-label">Days</div>
+                </div>
+                
+                <div class="price-box">
+                    <div class="price">6</div>
+                    <div class="price-label">Destinations</div>
                 </div>
             </div>
+            
             <div class="included-container">
                 <div class="included">
-                    <h3>Included</h3>
+                    <h3><i class="fas fa-check-circle"></i> Included</h3>
                     <ul>
-                        <li>Photography guidance by Laurent Dambies</li>
-                        <li>Private AC Transport</li>
-                        <li>All Entrance Fees</li>
-                        <li>4/5-Star Hotels (Half-Board)</li>
+                        <li>Photography guidance and feedback by Laurent Dambies.</li>
+                        <li>Air conditioned private car or van with driver.</li>
+                        <li>All entrance fees</li>
+                        <li>4- and 5-Star Properties with Half-Board Plans</li>
+                        <li>Meals as included in the itinerary</li>
                     </ul>
                 </div>
+                
                 <div class="excluded">
-                    <h3>Excluded</h3>
+                    <h3><i class="fas fa-times-circle"></i> Excluded</h3>
                     <ul>
                         <li>Airfare to Sri Lanka</li>
-                        <li>Personal Insurance</li>
-                        <li>Tourist Visa</li>
+                        <li>Personal insurance</li>
+                        <li>Tourist visa to Sri Lanka</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="booking">
+    
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
         <div class="container">
-            <h2>Book Your Adventure</h2>
-            <a href="https://www.angkorphotographytours.com/sri-lanka-photography-tour/" target="_blank" class="btn">Secure Your Spot with 30% Deposit</a>
-            <div class="booking-notice">Limited to 4 participants for personalized guidance</div>
+            <h2>Book Your Sri Lanka Adventure Now</h2>
+            
+            <p style="max-width: 800px; margin: 0 auto 30px; font-size: 1.2rem;">
+                Join an exclusive group of photographers on this immersive journey through Sri Lanka's most photogenic locations. Limited to just 4 participants for personalized guidance.
+            </p>
+            
+            <!-- UPDATED: Booking CTA Button opens in new window -->
+            <a href="https://www.angkorphotographytours.com/sri-lanka-photography-tour/" target="_blank" rel="noopener noreferrer" class="btn">Secure Your Spot with 30% Deposit</a>
+            
+            <div class="booking-notice">
+                30% deposit secures your spot • Full refund if cancelled 3 months before departure
+            </div>
         </div>
     </section>
 
+    <!-- Footer Section -->
     <footer>
-        <p>Crafted for photographers chasing authentic moments in Sri Lanka ❤️</p>
+        <div class="footer-content">
+            <p>Crafted for photographers who chase authentic moments in Sri Lanka <span class="footer-heart">❤️</span></p>
+        </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
+        // Gallery and Slideshow Functionality - UPDATED
         document.addEventListener('DOMContentLoaded', function() {
-            const wrapper = document.getElementById('slides-wrapper');
+            const categoryItems = document.querySelectorAll('.category-item');
+            const slideshow = document.getElementById('slideshow');
+            const slideshowWrapper = slideshow.querySelector('.slideshow-wrapper');
             const dotsContainer = document.getElementById('dots-container');
-            const catTitleDisplay = document.getElementById('current-category');
-            const currentNumDisplay = document.getElementById('current-slide');
-            const totalNumDisplay = document.getElementById('total-slides');
+            const prevBtn = slideshow.querySelector('.prev');
+            const nextBtn = slideshow.querySelector('.next');
+            const currentCategoryElement = document.getElementById('current-category');
+            const currentSlideElement = document.getElementById('current-slide');
+            const totalSlidesElement = document.getElementById('total-slides');
             
-            let currentIndex = 0;
-            let slideCount = 0;
-
-            function initSlideshow(category, count, title) {
-                wrapper.innerHTML = '';
-                dotsContainer.innerHTML = '';
-                currentIndex = 0;
-                slideCount = count;
-                catTitleDisplay.textContent = title;
-                totalNumDisplay.textContent = count;
-
-                for (let i = 1; i <= count; i++) {
-                    const slide = document.createElement('div');
-                    slide.className = i === 1 ? 'slide active' : 'slide';
-                    
-                    const img = document.createElement('img');
-                    img.src = `/images/sri-lanka-${category}-${i}.webp`;
-                    img.alt = `${title} - Image ${i}`;
-                    img.className = 'slide-img';
-                    
-                    slide.appendChild(img);
-                    wrapper.appendChild(slide);
-
-                    const dot = document.createElement('div');
-                    dot.className = i === 1 ? 'dot active' : 'dot';
-                    dot.onclick = () => showSlide(i - 1);
-                    dotsContainer.appendChild(dot);
+            let currentSlide = 0;
+            let currentCategory = 'people'; // CHANGED: Default to 'people' instead of 'temples'
+            let slideInterval;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            // Image collections for each category
+            const imageCollections = {
+                temples: {
+                    title: 'Ancient Temples',
+                    count: 12,
+                    images: [
+                        '/images/sri-lanka-temples-1.webp',
+                        '/images/sri-lanka-temples-2.webp',
+                        '/images/sri-lanka-temples-3.webp',
+                        '/images/sri-lanka-temples-4.webp',
+                        '/images/sri-lanka-temples-5.webp',
+                        '/images/sri-lanka-temples-6.webp',
+                        '/images/sri-lanka-temples-7.webp',
+                        '/images/sri-lanka-temples-8.webp',
+                        '/images/sri-lanka-temples-9.webp',
+                        '/images/sri-lanka-temples-10.webp',
+                        '/images/sri-lanka-temples-11.webp',
+                        '/images/sri-lanka-temples-12.webp'
+                    ]
+                },
+                people: {
+                    title: 'People & Culture',
+                    count: 13,
+                    images: [
+                        '/images/sri-lanka-photo-tour-people-1.webp',
+                        '/images/sri-lanka-photo-tour-people-2.webp',
+                        '/images/sri-lanka-photo-tour-people-3.webp',
+                        '/images/sri-lanka-photo-tour-people-4.webp',
+                        '/images/sri-lanka-photo-tour-people-5.webp',
+                        '/images/sri-lanka-photo-tour-people-6.webp',
+                        '/images/sri-lanka-photo-tour-people-7.webp',
+                        '/images/sri-lanka-photo-tour-people-8.webp',
+                        '/images/sri-lanka-photo-tour-people-9.webp',
+                        '/images/sri-lanka-photo-tour-people-10.webp',
+                        '/images/sri-lanka-photo-tour-people-11.webp',
+                        '/images/sri-lanka-photo-tour-people-12.webp',
+                        '/images/sri-lanka-photo-tour-people-13.webp'
+                    ]
+                },
+                landscape: {
+                    title: 'Landscape & Nature',
+                    count: 11,
+                    images: [
+                        '/images/sri-lanka-landscape-1.webp',
+                        '/images/sri-lanka-landscape-2.webp',
+                        '/images/sri-lanka-landscape-3.webp',
+                        '/images/sri-lanka-landscape-4.webp',
+                        '/images/sri-lanka-landscape-5.webp',
+                        '/images/sri-lanka-landscape-6.webp',
+                        '/images/sri-lanka-landscape-7.webp',
+                        '/images/sri-lanka-landscape-8.webp',
+                        '/images/sri-lanka-landscape-9.webp',
+                        '/images/sri-lanka-landscape-10.webp',
+                        '/images/sri-lanka-landscape-11.webp'
+                    ]
+                },
+                wildlife: {
+                    title: 'Wildlife',
+                    count: 6,
+                    images: [
+                        '/images/sri-lanka-wildlife-1.webp',
+                        '/images/sri-lanka-wildlife-2.webp',
+                        '/images/sri-lanka-wildlife-3.webp',
+                        '/images/sri-lanka-wildlife-4.webp',
+                        '/images/sri-lanka-wildlife-5.webp',
+                        '/images/sri-lanka-wildlife-6.webp'
+                    ]
                 }
-                updateUI();
-            }
-
-            function showSlide(index) {
-                const slides = document.querySelectorAll('.slide');
-                const dots = document.querySelectorAll('.dot');
-                
-                slides[currentIndex].classList.remove('active');
-                dots[currentIndex].classList.remove('active');
-                
-                currentIndex = (index + slideCount) % slideCount;
-                
-                slides[currentIndex].classList.add('active');
-                dots[currentIndex].classList.add('active');
-                updateUI();
-            }
-
-            function updateUI() {
-                currentNumDisplay.textContent = currentIndex + 1;
-            }
-
-            document.querySelectorAll('.category-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const cat = item.dataset.category;
-                    const count = parseInt(item.dataset.slides);
-                    const title = item.querySelector('h3').textContent;
-                    initSlideshow(cat, count, title);
-                    document.getElementById('slideshow').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            };
+            
+            // Initialize the slideshow with default category
+            initializeSlideshow('people'); // CHANGED: Default to 'people' instead of 'temples'
+            startSlideShow(); // Start auto rotation
+            
+            // Set up category click handlers
+            categoryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    const slideCount = parseInt(this.getAttribute('data-slides'));
+                    
+                    // Update current category
+                    currentCategory = category;
+                    currentSlide = 0;
+                    
+                    // Initialize the slideshow with selected category
+                    initializeSlideshow(category);
+                    
+                    // Make slideshow visible (already visible but ensure it)
+                    slideshow.classList.add('active');
+                    
+                    // Start auto rotation
+                    startSlideShow();
+                    
+                    // Scroll to slideshow
+                    slideshow.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 });
             });
-
-            document.querySelector('.next').onclick = () => showSlide(currentIndex + 1);
-            document.querySelector('.prev').onclick = () => showSlide(currentIndex - 1);
-
-            // Default load
-            initSlideshow('people', 13, 'People & Culture');
+            
+            // Preload images for better performance
+            function preloadImages(category) {
+                const images = imageCollections[category].images;
+                images.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            }
+            
+            // Initialize slideshow for a specific category
+            function initializeSlideshow(category) {
+                const collection = imageCollections[category];
+                
+                // Clear existing slides and dots
+                slideshowWrapper.innerHTML = '';
+                dotsContainer.innerHTML = '';
+                
+                // Update category info
+                currentCategoryElement.textContent = collection.title;
+                totalSlidesElement.textContent = collection.count;
+                
+                // Preload images for this category
+                preloadImages(category);
+                
+                // Create slides
+                collection.images.forEach((src, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = `slide ${index === 0 ? 'active' : ''}`;
+                    slide.innerHTML = `<img src="${src}" alt="${collection.title} - Image ${index + 1}" class="slide-img" loading="${index === 0 ? 'eager' : 'lazy'}">`;
+                    slideshowWrapper.appendChild(slide);
+                    
+                    // Create dot
+                    const dot = document.createElement('span');
+                    dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                    dot.setAttribute('data-slide', index);
+                    dotsContainer.appendChild(dot);
+                    
+                    // Add click event to dot
+                    dot.addEventListener('click', function() {
+                        const slideIndex = parseInt(this.getAttribute('data-slide'));
+                        showSlide(slideIndex);
+                        startSlideShow(); // Restart interval after manual navigation
+                    });
+                });
+                
+                // Update current slide display
+                updateCurrentSlideDisplay();
+            }
+            
+            // Show specific slide
+            function showSlide(n) {
+                const slides = slideshowWrapper.querySelectorAll('.slide');
+                const dots = dotsContainer.querySelectorAll('.dot');
+                const totalSlides = slides.length;
+                
+                // Hide all slides and remove active class from dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Handle wrap-around
+                if (n >= totalSlides) currentSlide = 0;
+                else if (n < 0) currentSlide = totalSlides - 1;
+                else currentSlide = n;
+                
+                // Show current slide and activate corresponding dot
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+                
+                // Update current slide display
+                updateCurrentSlideDisplay();
+            }
+            
+            // Update the current slide number display
+            function updateCurrentSlideDisplay() {
+                currentSlideElement.textContent = currentSlide + 1;
+            }
+            
+            // Next slide function
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+            
+            // Previous slide function
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+            
+            // Start slideshow auto-rotation
+            function startSlideShow() {
+                // Clear any existing interval
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                }
+                
+                // Start new interval (5 seconds)
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            // Stop slideshow auto-rotation
+            function stopSlideShow() {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = null;
+                }
+            }
+            
+            // Event listeners for navigation buttons
+            prevBtn.addEventListener('click', function() {
+                prevSlide();
+                startSlideShow(); // Restart interval after manual navigation
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                startSlideShow(); // Restart interval after manual navigation
+            });
+            
+            // Touch support for mobile devices
+            slideshow.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            slideshow.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            // Handle swipe gestures
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                
+                if (touchStartX - touchEndX > swipeThreshold) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else if (touchEndX - touchStartX > swipeThreshold) {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+                
+                startSlideShow(); // Restart interval after swipe
+            }
+            
+            // Pause slideshow on hover
+            slideshow.addEventListener('mouseenter', stopSlideShow);
+            slideshow.addEventListener('mouseleave', startSlideShow);
+            
+            // Keyboard navigation support
+            document.addEventListener('keydown', function(e) {
+                if (!slideshow.classList.contains('active')) return;
+                
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    startSlideShow();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    startSlideShow();
+                } else if (e.key === 'Escape') {
+                    slideshow.classList.remove('active');
+                    stopSlideShow();
+                }
+            });
+            
+            // Initialize slideshow - show People & Culture by default
+            // Slideshow is already set to active in HTML
         });
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
