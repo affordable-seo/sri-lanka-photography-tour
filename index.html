@@ -758,6 +758,68 @@
                 font-size: 1.4rem;
             }
         }
+              /* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;                     /* Start larger */
+    height: 70px;                    /* Start larger */
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;                 /* Start larger */
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 35px rgba(37, 211, 102, 0.5);
+    background: #1da851;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Desktop - Slightly larger */
+@media (min-width: 769px) {
+    .whatsapp-float {
+        width: 75px;
+        height: 75px;
+        font-size: 38px;
+    }
+}
+
+/* Mobile - Perfect touch size */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 70px;           /* Good finger-tap size */
+        height: 70px;
+        font-size: 35px;
+        bottom: 25px;
+        right: 25px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .whatsapp-float {
+        width: 65px;
+        height: 65px;
+        font-size: 32px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
     </style>
      <script type="application/ld+json">
 {
@@ -1330,8 +1392,16 @@
             // Slideshow is already set to active in HTML
         });
     </script>
+   <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Sri%20Lanka%20Photography%20Tour%202026.%20Can%20you%20tell%20me%20more%3F" 
+   target="_blank" 
+   class="whatsapp-float"
+   aria-label="Chat on WhatsApp about Sri Lanka Photography Tour"
+   title="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 </body>
 </html>
+
 
 
 
