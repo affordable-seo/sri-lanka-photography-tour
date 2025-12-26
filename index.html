@@ -636,6 +636,133 @@
             margin-right: auto;
         }
         
+        /* Instagram Section */
+        .instagram-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e4edf5 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .instagram-section h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        /* Animated Instagram Logo */
+        .instagram-logo {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: logo-float 3s ease-in-out infinite;
+            cursor: pointer;
+        }
+        
+        .instagram-logo::before {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border: 3px solid white;
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .instagram-logo::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid white;
+            border-radius: 50%;
+            top: 15px;
+            right: 15px;
+        }
+        
+        @keyframes logo-float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                transform: translateY(-8px) rotate(5deg);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            }
+        }
+        
+        /* Instagram Description */
+        .instagram-description {
+            max-width: 800px;
+            margin: 20px auto 30px;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Instagram Link Button */
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 50px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(193, 53, 132, 0.3);
+        }
+        
+        .instagram-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(193, 53, 132, 0.4);
+            letter-spacing: 1px;
+        }
+        
+        .instagram-link i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        /* Instagram Preview Images */
+        .instagram-preview {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 30px auto 20px;
+            max-width: 850px;
+        }
+        
+        .instagram-preview img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            filter: brightness(0.95);
+        }
+        
+        .instagram-preview img:hover {
+            transform: scale(1.08);
+            filter: brightness(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary) 0%, #005a93 100%);
@@ -680,6 +807,21 @@
                 font-size: 2.2rem;
             }
             
+            .instagram-preview img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .instagram-logo {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .instagram-logo::before {
+                width: 32px;
+                height: 32px;
+            }
+            
             .footer-content p {
                 font-size: 1.3rem;
             }
@@ -715,6 +857,21 @@
                 font-size: 2.8rem;
             }
             
+            .instagram-preview img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .instagram-description {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            .instagram-link {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
+            
             .footer-content p {
                 font-size: 1.2rem;
             }
@@ -745,6 +902,29 @@
                 gap: 20px;
             }
             
+            .instagram-preview img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .instagram-logo {
+                width: 50px;
+                height: 50px;
+                border-radius: 15px;
+            }
+            
+            .instagram-logo::before {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .instagram-logo::after {
+                width: 8px;
+                height: 8px;
+                top: 12px;
+                right: 12px;
+            }
+            
             .footer-content p {
                 font-size: 1.1rem;
                 line-height: 1.5;
@@ -758,68 +938,101 @@
                 font-size: 1.4rem;
             }
         }
-              /* WhatsApp Floating Button */
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 70px;                     /* Start larger */
-    height: 70px;                    /* Start larger */
-    background: #25D366;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;                 /* Start larger */
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-    z-index: 1000;
-    transition: all 0.3s ease;
-    animation: float 3s ease-in-out infinite;
-    text-decoration: none;
-}
+        
+        @media (max-width: 480px) {
+            .instagram-preview {
+                gap: 8px;
+            }
+            
+            .instagram-preview img {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .instagram-link {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            
+            .instagram-section h2 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .instagram-preview img {
+                width: 65px;
+                height: 65px;
+            }
+            
+            .instagram-logo {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;                     /* Start larger */
+            height: 70px;                    /* Start larger */
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;                 /* Start larger */
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+            text-decoration: none;
+        }
 
-.whatsapp-float:hover {
-    transform: scale(1.15);
-    box-shadow: 0 8px 35px rgba(37, 211, 102, 0.5);
-    background: #1da851;
-}
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.5);
+            background: #1da851;
+        }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-/* Desktop - Slightly larger */
-@media (min-width: 769px) {
-    .whatsapp-float {
-        width: 75px;
-        height: 75px;
-        font-size: 38px;
-    }
-}
+        /* Desktop - Slightly larger */
+        @media (min-width: 769px) {
+            .whatsapp-float {
+                width: 75px;
+                height: 75px;
+                font-size: 38px;
+            }
+        }
 
-/* Mobile - Perfect touch size */
-@media (max-width: 768px) {
-    .whatsapp-float {
-        width: 70px;           /* Good finger-tap size */
-        height: 70px;
-        font-size: 35px;
-        bottom: 25px;
-        right: 25px;
-    }
-}
+        /* Mobile - Perfect touch size */
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 70px;           /* Good finger-tap size */
+                height: 70px;
+                font-size: 35px;
+                bottom: 25px;
+                right: 25px;
+            }
+        }
 
-/* Small phones */
-@media (max-width: 480px) {
-    .whatsapp-float {
-        width: 65px;
-        height: 65px;
-        font-size: 32px;
-        bottom: 20px;
-        right: 20px;
-    }
-}
+        /* Small phones */
+        @media (max-width: 480px) {
+            .whatsapp-float {
+                width: 65px;
+                height: 65px;
+                font-size: 32px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
     </style>
      <script type="application/ld+json">
 {
@@ -1098,6 +1311,35 @@
             <div class="booking-notice">
                 30% deposit secures your spot • Full refund if cancelled 3 months before departure
             </div>
+        </div>
+    </section>
+
+    <!-- NEW Instagram Section -->
+    <section class="instagram-section">
+        <div class="container">
+            <h2>
+                <div class="instagram-logo"></div>
+                Discover Our Last Sri Lanka Photo Tour's Pictures on Instagram
+            </h2>
+            
+            <p class="instagram-description">
+                Follow our Instagram to see stunning photos from our recent photography tours across Sri Lanka. 
+                Get inspired by our community's captures, behind-the-scenes moments, and previews of upcoming tours.
+                Use hashtag <strong>#SriLankaPhotoTours</strong> to be featured!
+            </p>
+            
+            <!-- Instagram Photo Preview -->
+            <div class="instagram-preview">
+                <img src="https://images.unsplash.com/photo-1559661171-5d4e4b83e682?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sri Lanka Temple">
+                <img src="https://images.unsplash.com/photo-1573843989-c9d7ad0f6c82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sri Lanka Train">
+                <img src="https://images.unsplash.com/photo-1523480717984-24cba35ae1eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sri Lanka Beach">
+                <img src="https://images.unsplash.com/photo-1593693399748-55d4c653298c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sri Lanka Tea Plantation">
+                <img src="https://images.unsplash.com/photo-1590077428593-a55bb07c4665?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sri Lanka Wildlife">
+            </div>
+            
+            <a href="https://www.instagram.com/srilankaphototours" target="_blank" rel="noopener noreferrer" class="instagram-link">
+                <i class="fab fa-instagram"></i> Follow us on Instagram
+            </a>
         </div>
     </section>
 
@@ -1390,6 +1632,33 @@
             
             // Initialize slideshow - show People & Culture by default
             // Slideshow is already set to active in HTML
+            
+            // Instagram Logo Click Handler
+            const instagramLogo = document.querySelector('.instagram-logo');
+            const instagramLink = document.querySelector('.instagram-link');
+            
+            if (instagramLogo) {
+                instagramLogo.addEventListener('click', function() {
+                    window.open('https://www.instagram.com/srilankaphototours', '_blank');
+                });
+            }
+            
+            // Add hover effect to Instagram preview images
+            const instaImages = document.querySelectorAll('.instagram-preview img');
+            instaImages.forEach(img => {
+                img.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.08)';
+                });
+                
+                img.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+                
+                // Also make images clickable to Instagram
+                img.addEventListener('click', function() {
+                    window.open('https://www.instagram.com/srilankaphototours', '_blank');
+                });
+            });
         });
     </script>
    <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Sri%20Lanka%20Photography%20Tour%202026.%20Can%20you%20tell%20me%20more%3F" 
@@ -1401,20 +1670,3 @@
 </a>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
