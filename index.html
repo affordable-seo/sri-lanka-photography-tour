@@ -636,7 +636,7 @@
             margin-right: auto;
         }
         
-        /* Instagram Section - SIMPLIFIED */
+        /* Instagram Section - FIXED IMAGE DISPLAY */
         .instagram-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #e4edf5 100%);
             text-align: center;
@@ -737,7 +737,7 @@
             font-size: 1.3rem;
         }
         
-        /* Simplified Instagram Grid */
+        /* FIXED Instagram Grid - Images fit properly */
         .instagram-simple-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -760,6 +760,9 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             background: white;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .instagram-simple-item:hover {
@@ -767,22 +770,33 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
+        /* FIXED: Instagram image container */
         .instagram-image-container {
             position: relative;
             width: 100%;
-            height: 0;
-            padding-bottom: 100%; /* Makes it square */
+            height: 400px; /* Fixed height for consistent display */
             overflow: hidden;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
+        /* FIXED: Instagram image styling */
         .instagram-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Changed from cover to contain to show full image */
+            object-position: center;
+            display: block;
+            background: #f8f9fa;
             transition: transform 0.5s ease;
+        }
+        
+        /* Alternative: Use cover but ensure good positioning */
+        .instagram-image-container.cover img {
+            object-fit: cover;
+            object-position: center center;
         }
         
         .instagram-simple-item:hover .instagram-image-container img {
@@ -840,18 +854,46 @@
             text-align: left;
         }
         
-        /* Footer */
+        /* Responsive adjustments for Instagram images */
+        @media (max-width: 992px) {
+            .instagram-image-container {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .instagram-image-container {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .instagram-image-container {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .instagram-image-container {
+                height: 220px;
+            }
+        }
+        
+        /* Footer with Enhanced Heartbeat Animation */
         footer {
             background: linear-gradient(135deg, var(--primary) 0%, #005a93 100%);
             color: white;
             text-align: center;
             padding: 60px 20px;
             border-top: 5px solid var(--secondary);
+            position: relative;
         }
         
         .footer-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .footer-content p {
@@ -862,16 +904,54 @@
             margin-bottom: 0;
         }
         
+        /* ENHANCED Heartbeat Animation */
         .footer-heart {
             color: var(--accent);
-            font-size: 1.6rem;
-            margin: 0 5px;
-            animation: heartbeat 1.5s ease-in-out infinite;
+            font-size: 2rem;
+            margin: 0 8px;
+            display: inline-block;
+            animation: heartbeat 1.2s infinite;
+            text-shadow: 0 0 10px rgba(217, 4, 41, 0.3);
         }
         
         @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            0%, 100% { 
+                transform: scale(1); 
+                text-shadow: 0 0 10px rgba(217, 4, 41, 0.3);
+            }
+            25% { 
+                transform: scale(1.1); 
+                text-shadow: 0 0 20px rgba(217, 4, 41, 0.5);
+            }
+            50% { 
+                transform: scale(1.15); 
+                text-shadow: 0 0 25px rgba(217, 4, 41, 0.7);
+                color: #ff3355;
+            }
+            75% { 
+                transform: scale(1.1); 
+                text-shadow: 0 0 20px rgba(217, 4, 41, 0.5);
+            }
+        }
+        
+        /* Pulsing glow effect for footer */
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+            opacity: 0;
+            animation: pulseGlow 3s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.5; }
         }
         
         /* Responsive Adjustments */
@@ -896,6 +976,10 @@
             
             .footer-content p {
                 font-size: 1.3rem;
+            }
+            
+            .footer-heart {
+                font-size: 1.8rem;
             }
         }
         
@@ -941,6 +1025,10 @@
             
             .footer-content p {
                 font-size: 1.2rem;
+            }
+            
+            .footer-heart {
+                font-size: 1.6rem;
             }
             
             footer {
@@ -992,12 +1080,12 @@
                 line-height: 1.5;
             }
             
-            footer {
-                padding: 40px 15px;
-            }
-            
             .footer-heart {
                 font-size: 1.4rem;
+            }
+            
+            footer {
+                padding: 40px 15px;
             }
         }
         
@@ -1362,7 +1450,7 @@
         </div>
     </section>
 
-    <!-- NEW Instagram Section - SIMPLIFIED with just images -->
+    <!-- NEW Instagram Section - FIXED IMAGE DISPLAY -->
     <section class="instagram-section">
         <div class="container">
             <h2>
@@ -1375,7 +1463,7 @@
                 Get inspired to join our next photo tour !               
             </p>
             
-            <!-- Simplified Instagram Grid with just images -->
+            <!-- Fixed Instagram Grid with properly fitting images -->
             <div class="instagram-simple-grid">
                 <!-- Post 1 -->
                 <div class="instagram-simple-item">
@@ -1392,7 +1480,7 @@
                 <!-- Post 2 -->
                 <div class="instagram-simple-item">
                     <div class="instagram-image-container">
-                        <img src="https://scontent.cdninstagram.com/v/t51.82787-15/589204995_18328251391244147_8774370438143732633_n.webp?stp=c191.0.576.575a_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&amp;_nc_ohc=9E3DkBu-KecQ7kNvwFmUVZR&amp;_nc_oc=AdmoXbArBvLEMkLUy5Xdcl360cZRzLsvNUnXmbx5Zt-xvk3upz1LOjjT3CSRNVoQMoQ&amp;_nc_zt=23&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=kNm0MGibfTLGiQfeUbElSg&amp;oh=00_AfnrHSTzEJkiYs_UqbtrnRNbK4IiRs7kRObCQgtUMgEx_A&amp;oe=6955D965"" alt="Sri Lanka Beach sunset">
+                        <img src="https://scontent.cdninstagram.com/v/t51.82787-15/589204995_18328251391244147_8774370438143732633_n.webp?stp=c191.0.576.575a_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&amp;_nc_ohc=9E3DkBu-KecQ7kNvwFmUVZR&amp;_nc_oc=AdmoXbArBvLEMkLUy5Xdcl360cZRzLsvNUnXmbx5Zt-xvk3upz1LOjjT3CSRNVoQMoQ&amp;_nc_zt=23&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=kNm0MGibfTLGiQfeUbElSg&amp;oh=00_AfnrHSTzEJkiYs_UqbtrnRNbK4IiRs7kRObCQgtUMgEx_A&amp;oe=6955D965" alt="Sri Lanka Beach sunset">
                         <div class="instagram-overlay">
                             <a href="https://www.instagram.com/p/DSuCKQbE6Da/" target="_blank" class="instagram-view-btn">
                                 <i class="fab fa-instagram"></i>
@@ -1416,7 +1504,7 @@
                 <!-- Post 4 -->
                 <div class="instagram-simple-item">
                     <div class="instagram-image-container">
-                        <img src="https://scontent.cdninstagram.com/v/t51.82787-15/605350197_18328257097244147_8275894470145733447_n.webp?stp=c191.0.576.575a_dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_pvKXU7VSK0Q7kNvwHLC7ZZ&_nc_oc=AdmR3gPM7ObYsQbgw4YCL10SgAFfG4DkqK9CeCeiOIYHPr1TUGPkVwH2eO3zU_I7jPM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=7dS54_PzacoYIT7TUkmF9Q&oh=00_Afnnzvfq4GFKLpT72SBIUzgUYwyVD3kh0eSVCglBUuw6rw&oe=69547525">
+                        <img src="https://scontent.cdninstagram.com/v/t51.82787-15/605350197_18328257097244147_8275894470145733447_n.webp?stp=c191.0.576.575a_dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_pvKXU7VSK0Q7kNvwHLC7ZZ&_nc_oc=AdmR3gPM7ObYsQbgw4YCL10SgAFfG4DkqK9CeCeiOIYHPr1TUGPkVwH2eO3zU_I7jPM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=7dS54_PzacoYIT7TUkmF9Q&oh=00_Afnnzvfq4GFKLpT72SBIUzgUYwyVD3kh0eSVCglBUuw6rw&oe=69547525" alt="Sri Lanka temple">
                         <div class="instagram-overlay">
                             <a href="https://www.instagram.com/p/DSuMSlCk-2V/" target="_blank" class="instagram-view-btn">
                                 <i class="fab fa-instagram"></i>
@@ -1432,7 +1520,7 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Footer Section with Enhanced Heartbeat -->
     <footer>
         <div class="footer-content">
             <p>Crafted for photographers who chase authentic moments in Sri Lanka <span class="footer-heart">❤️</span></p>
@@ -1719,9 +1807,6 @@
                 }
             });
             
-            // Initialize slideshow - show People & Culture by default
-            // Slideshow is already set to active in HTML
-            
             // Instagram Logo Click Handler
             const instagramLogo = document.querySelector('.instagram-logo');
             const instagramLink = document.querySelector('.instagram-link');
@@ -1730,6 +1815,46 @@
                 instagramLogo.addEventListener('click', function() {
                     window.open('https://www.instagram.com/srilankaphototours', '_blank');
                 });
+            }
+            
+            // Fix Instagram Image Display
+            fixInstagramImages();
+            
+            // Function to fix Instagram image display
+            function fixInstagramImages() {
+                const instagramImages = document.querySelectorAll('.instagram-image-container img');
+                
+                instagramImages.forEach(img => {
+                    // Add error handling for broken images
+                    img.addEventListener('error', function() {
+                        console.log('Image failed to load:', this.src);
+                        // You could set a fallback image here if needed
+                    });
+                    
+                    // Ensure images display properly
+                    if (img.complete && img.naturalWidth > 0) {
+                        adjustImageDisplay(img);
+                    } else {
+                        img.addEventListener('load', function() {
+                            adjustImageDisplay(this);
+                        });
+                    }
+                });
+                
+                function adjustImageDisplay(image) {
+                    const container = image.parentElement;
+                    const imgWidth = image.naturalWidth;
+                    const imgHeight = image.naturalHeight;
+                    
+                    // Add class based on aspect ratio
+                    if (imgWidth > imgHeight * 1.3) {
+                        container.classList.add('landscape');
+                    } else if (imgHeight > imgWidth * 1.3) {
+                        container.classList.add('portrait');
+                    } else {
+                        container.classList.add('square');
+                    }
+                }
             }
             
             // Instagram Image Click Handlers
@@ -1751,7 +1876,3 @@
 </a>
 </body>
 </html>
-
-
-
-
