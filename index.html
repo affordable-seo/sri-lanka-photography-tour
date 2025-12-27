@@ -636,7 +636,7 @@
             margin-right: auto;
         }
         
-        /* Instagram Section - FIXED IMAGE DISPLAY */
+        /* Instagram Section - FIXED to show entire images */
         .instagram-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #e4edf5 100%);
             text-align: center;
@@ -737,7 +737,7 @@
             font-size: 1.3rem;
         }
         
-        /* FIXED Instagram Grid - Images fit properly */
+        /* FIXED Instagram Grid - Shows entire images properly */
         .instagram-simple-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -762,7 +762,6 @@
             background: white;
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
         
         .instagram-simple-item:hover {
@@ -770,35 +769,50 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
-        /* FIXED: Instagram image container */
+        /* PERFECT IMAGE CONTAINER - Shows whole image and fills space */
         .instagram-image-container {
             position: relative;
             width: 100%;
-            height: 400px; /* Fixed height for consistent display */
+            height: 400px; /* Fixed height */
             overflow: hidden;
-            background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(45deg, #f5f7fa, #e4edf5); /* Gradient background */
         }
         
-        /* FIXED: Instagram image styling */
+        /* SMART IMAGE DISPLAY - Shows whole image and fills container */
         .instagram-image-container img {
+            width: auto; /* Let image keep its natural width */
+            height: 100%; /* Fill container height */
+            max-width: 100%; /* Don't exceed container width */
+            object-fit: contain; /* Show whole image */
+            transition: transform 0.5s ease;
+            display: block;
+        }
+        
+        /* For landscape images (wider than tall) */
+        .instagram-image-container.landscape img {
+            width: 100%; /* Fill container width */
+            height: auto; /* Adjust height automatically */
+            max-height: 100%; /* Don't exceed container height */
+        }
+        
+        /* For portrait images (taller than wide) */
+        .instagram-image-container.portrait img {
+            width: auto; /* Adjust width automatically */
+            height: 100%; /* Fill container height */
+            max-width: 100%; /* Don't exceed container width */
+        }
+        
+        /* For square images */
+        .instagram-image-container.square img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Changed from cover to contain to show full image */
-            object-position: center;
-            display: block;
-            background: #f8f9fa;
-            transition: transform 0.5s ease;
+            object-fit: cover; /* Square images can be cropped a bit */
         }
         
-        /* Alternative: Use cover but ensure good positioning */
-        .instagram-image-container.cover img {
-            object-fit: cover;
-            object-position: center center;
-        }
-        
+        /* Hover effect */
         .instagram-simple-item:hover .instagram-image-container img {
             transform: scale(1.05);
         }
@@ -844,17 +858,7 @@
             transform: scale(1.1) !important;
         }
         
-        /* Instagram image captions */
-        .instagram-caption {
-            padding: 15px;
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.5;
-            border-top: 1px solid #eee;
-            text-align: left;
-        }
-        
-        /* Responsive adjustments for Instagram images */
+        /* Responsive adjustments for Instagram */
         @media (max-width: 992px) {
             .instagram-image-container {
                 height: 350px;
@@ -1450,7 +1454,7 @@
         </div>
     </section>
 
-    <!-- NEW Instagram Section - FIXED IMAGE DISPLAY -->
+    <!-- Instagram Section with FIXED image display -->
     <section class="instagram-section">
         <div class="container">
             <h2>
@@ -1463,7 +1467,7 @@
                 Get inspired to join our next photo tour !               
             </p>
             
-            <!-- Fixed Instagram Grid with properly fitting images -->
+            <!-- Instagram Grid with properly displayed images -->
             <div class="instagram-simple-grid">
                 <!-- Post 1 -->
                 <div class="instagram-simple-item">
@@ -1520,7 +1524,7 @@
         </div>
     </section>
 
-    <!-- Footer Section with Enhanced Heartbeat -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-content">
             <p>Crafted for photographers who chase authentic moments in Sri Lanka <span class="footer-heart">❤️</span></p>
@@ -1529,7 +1533,7 @@
 
     <!-- JavaScript -->
     <script>
-        // Gallery and Slideshow Functionality - UPDATED
+        // Gallery and Slideshow Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const categoryItems = document.querySelectorAll('.category-item');
             const slideshow = document.getElementById('slideshow');
@@ -1542,7 +1546,7 @@
             const totalSlidesElement = document.getElementById('total-slides');
             
             let currentSlide = 0;
-            let currentCategory = 'people'; // CHANGED: Default to 'people' instead of 'temples'
+            let currentCategory = 'people';
             let slideInterval;
             let touchStartX = 0;
             let touchEndX = 0;
@@ -1618,8 +1622,8 @@
             };
             
             // Initialize the slideshow with default category
-            initializeSlideshow('people'); // CHANGED: Default to 'people' instead of 'temples'
-            startSlideShow(); // Start auto rotation
+            initializeSlideshow('people');
+            startSlideShow();
             
             // Set up category click handlers
             categoryItems.forEach(item => {
@@ -1634,7 +1638,7 @@
                     // Initialize the slideshow with selected category
                     initializeSlideshow(category);
                     
-                    // Make slideshow visible (already visible but ensure it)
+                    // Make slideshow visible
                     slideshow.classList.add('active');
                     
                     // Start auto rotation
@@ -1644,15 +1648,6 @@
                     slideshow.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 });
             });
-            
-            // Preload images for better performance
-            function preloadImages(category) {
-                const images = imageCollections[category].images;
-                images.forEach(src => {
-                    const img = new Image();
-                    img.src = src;
-                });
-            }
             
             // Initialize slideshow for a specific category
             function initializeSlideshow(category) {
@@ -1665,9 +1660,6 @@
                 // Update category info
                 currentCategoryElement.textContent = collection.title;
                 totalSlidesElement.textContent = collection.count;
-                
-                // Preload images for this category
-                preloadImages(category);
                 
                 // Create slides
                 collection.images.forEach((src, index) => {
@@ -1686,7 +1678,7 @@
                     dot.addEventListener('click', function() {
                         const slideIndex = parseInt(this.getAttribute('data-slide'));
                         showSlide(slideIndex);
-                        startSlideShow(); // Restart interval after manual navigation
+                        startSlideShow();
                     });
                 });
                 
@@ -1754,12 +1746,12 @@
             // Event listeners for navigation buttons
             prevBtn.addEventListener('click', function() {
                 prevSlide();
-                startSlideShow(); // Restart interval after manual navigation
+                startSlideShow();
             });
             
             nextBtn.addEventListener('click', function() {
                 nextSlide();
-                startSlideShow(); // Restart interval after manual navigation
+                startSlideShow();
             });
             
             // Touch support for mobile devices
@@ -1784,7 +1776,7 @@
                     prevSlide();
                 }
                 
-                startSlideShow(); // Restart interval after swipe
+                startSlideShow();
             }
             
             // Pause slideshow on hover
@@ -1817,7 +1809,7 @@
                 });
             }
             
-            // Fix Instagram Image Display
+            // Fix Instagram Image Display - Ensures whole images are visible
             fixInstagramImages();
             
             // Function to fix Instagram image display
@@ -1831,7 +1823,7 @@
                         // You could set a fallback image here if needed
                     });
                     
-                    // Ensure images display properly
+                    // Ensure images display properly based on aspect ratio
                     if (img.complete && img.naturalWidth > 0) {
                         adjustImageDisplay(img);
                     } else {
@@ -1845,14 +1837,24 @@
                     const container = image.parentElement;
                     const imgWidth = image.naturalWidth;
                     const imgHeight = image.naturalHeight;
+                    const aspectRatio = imgWidth / imgHeight;
+                    
+                    // Clear any existing classes
+                    container.classList.remove('landscape', 'portrait', 'square');
                     
                     // Add class based on aspect ratio
-                    if (imgWidth > imgHeight * 1.3) {
+                    if (aspectRatio > 1.2) {
+                        // Landscape image (wider than tall)
                         container.classList.add('landscape');
-                    } else if (imgHeight > imgWidth * 1.3) {
+                        console.log('Landscape image:', imgWidth, 'x', imgHeight);
+                    } else if (aspectRatio < 0.8) {
+                        // Portrait image (taller than wide)
                         container.classList.add('portrait');
+                        console.log('Portrait image:', imgWidth, 'x', imgHeight);
                     } else {
+                        // Square or near-square image
                         container.classList.add('square');
+                        console.log('Square image:', imgWidth, 'x', imgHeight);
                     }
                 }
             }
@@ -1861,7 +1863,7 @@
             const instagramImages = document.querySelectorAll('.instagram-view-btn');
             instagramImages.forEach(btn => {
                 btn.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent bubbling
+                    e.stopPropagation();
                 });
             });
         });
