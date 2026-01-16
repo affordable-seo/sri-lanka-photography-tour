@@ -636,251 +636,9 @@
             margin-right: auto;
         }
         
-        /* Instagram Section - FIXED to show entire images */
+        /* Instagram Section - REMOVED */
         .instagram-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e4edf5 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .instagram-section h2 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        
-        /* Animated Instagram Logo */
-        .instagram-logo {
-            display: inline-block;
-            position: relative;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            border-radius: 18px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            animation: logo-float 3s ease-in-out infinite;
-            cursor: pointer;
-        }
-        
-        .instagram-logo::before {
-            content: '';
-            position: absolute;
-            width: 35px;
-            height: 35px;
-            border: 3px solid white;
-            border-radius: 10px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        .instagram-logo::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border: 2px solid white;
-            border-radius: 50%;
-            top: 15px;
-            right: 15px;
-        }
-        
-        @keyframes logo-float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            }
-            50% {
-                transform: translateY(-8px) rotate(5deg);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            }
-        }
-        
-        /* Instagram Description */
-        .instagram-description {
-            max-width: 800px;
-            margin: 20px auto 30px;
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.7;
-        }
-        
-        /* Instagram Link Button */
-        .instagram-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 14px 28px;
-            border-radius: 50px;
-            margin-top: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(193, 53, 132, 0.3);
-        }
-        
-        .instagram-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(193, 53, 132, 0.4);
-            letter-spacing: 1px;
-        }
-        
-        .instagram-link i {
-            margin-right: 10px;
-            font-size: 1.3rem;
-        }
-        
-        /* FIXED Instagram Grid - Shows entire images properly */
-        .instagram-simple-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin: 40px auto;
-            max-width: 1000px;
-        }
-        
-        @media (max-width: 768px) {
-            .instagram-simple-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                max-width: 500px;
-            }
-        }
-        
-        .instagram-simple-item {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            background: white;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .instagram-simple-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* PERFECT IMAGE CONTAINER - Shows whole image and fills space */
-        .instagram-image-container {
-            position: relative;
-            width: 100%;
-            height: 400px; /* Fixed height */
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(45deg, #f5f7fa, #e4edf5); /* Gradient background */
-        }
-        
-        /* SMART IMAGE DISPLAY - Shows whole image and fills container */
-        .instagram-image-container img {
-            width: auto; /* Let image keep its natural width */
-            height: 100%; /* Fill container height */
-            max-width: 100%; /* Don't exceed container width */
-            object-fit: contain; /* Show whole image */
-            transition: transform 0.5s ease;
-            display: block;
-        }
-        
-        /* For landscape images (wider than tall) */
-        .instagram-image-container.landscape img {
-            width: 100%; /* Fill container width */
-            height: auto; /* Adjust height automatically */
-            max-height: 100%; /* Don't exceed container height */
-        }
-        
-        /* For portrait images (taller than wide) */
-        .instagram-image-container.portrait img {
-            width: auto; /* Adjust width automatically */
-            height: 100%; /* Fill container height */
-            max-width: 100%; /* Don't exceed container width */
-        }
-        
-        /* For square images */
-        .instagram-image-container.square img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Square images can be cropped a bit */
-        }
-        
-        /* Hover effect */
-        .instagram-simple-item:hover .instagram-image-container img {
-            transform: scale(1.05);
-        }
-        
-        .instagram-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .instagram-simple-item:hover .instagram-overlay {
-            opacity: 1;
-        }
-        
-        .instagram-view-btn {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            text-decoration: none;
-            transform: scale(0.8);
-            transition: all 0.3s ease;
-        }
-        
-        .instagram-simple-item:hover .instagram-view-btn {
-            transform: scale(1);
-        }
-        
-        .instagram-view-btn:hover {
-            transform: scale(1.1) !important;
-        }
-        
-        /* Responsive adjustments for Instagram */
-        @media (max-width: 992px) {
-            .instagram-image-container {
-                height: 350px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .instagram-image-container {
-                height: 300px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .instagram-image-container {
-                height: 250px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .instagram-image-container {
-                height: 220px;
-            }
+            display: none;
         }
         
         /* Footer with Enhanced Heartbeat Animation */
@@ -968,16 +726,6 @@
                 font-size: 2.2rem;
             }
             
-            .instagram-logo {
-                width: 55px;
-                height: 55px;
-            }
-            
-            .instagram-logo::before {
-                width: 32px;
-                height: 32px;
-            }
-            
             .footer-content p {
                 font-size: 1.3rem;
             }
@@ -1017,16 +765,6 @@
                 font-size: 2.8rem;
             }
             
-            .instagram-description {
-                font-size: 1rem;
-                padding: 0 15px;
-            }
-            
-            .instagram-link {
-                font-size: 1.1rem;
-                padding: 12px 24px;
-            }
-            
             .footer-content p {
                 font-size: 1.2rem;
             }
@@ -1061,24 +799,6 @@
                 gap: 20px;
             }
             
-            .instagram-logo {
-                width: 50px;
-                height: 50px;
-                border-radius: 15px;
-            }
-            
-            .instagram-logo::before {
-                width: 28px;
-                height: 28px;
-            }
-            
-            .instagram-logo::after {
-                width: 8px;
-                height: 8px;
-                top: 12px;
-                right: 12px;
-            }
-            
             .footer-content p {
                 font-size: 1.1rem;
                 line-height: 1.5;
@@ -1090,24 +810,6 @@
             
             footer {
                 padding: 40px 15px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .instagram-link {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
-            
-            .instagram-section h2 {
-                font-size: 1.6rem;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .instagram-logo {
-                width: 45px;
-                height: 45px;
             }
         }
         
@@ -1454,76 +1156,6 @@
         </div>
     </section>
 
-    <!-- Instagram Section with FIXED image display -->
-    <section class="instagram-section">
-        <div class="container">
-            <h2>
-                <div class="instagram-logo"></div>
-                Discover Our Last Sri Lanka Photo Tour's Pictures on Instagram
-            </h2>
-            
-            <p class="instagram-description">
-                Follow our Instagram to see stunning photos from our recent photography tours across Sri Lanka. 
-                Get inspired to join our next photo tour !               
-            </p>
-            
-            <!-- Instagram Grid with properly displayed images -->
-            <div class="instagram-simple-grid">
-                <!-- Post 1 -->
-                <div class="instagram-simple-item">
-                    <div class="instagram-image-container">
-                        <img src="https://scontent.cdninstagram.com/v/t51.82787-15/588677423_18328378660244147_6412782458155574143_n.webp?stp=c191.0.576.575a_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=104&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&amp;_nc_ohc=6y86ZcpnXvQQ7kNvwFG2cxZ&amp;_nc_oc=AdnfksBO_XM2ow97H1M3BJ_zEuJt6sVQ20vpfK-qRx7v0zoTbNsEWeBWxRUiMA6L8xc&amp;_nc_zt=23&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=xoqTQBTFj1NNazrcqjzq5w&amp;oh=00_AfnDH2M4NQNinYPc1w8cX8F-vGS4q0RZKIYQD22Qtd_2fA&amp;oe=6955FF69" alt="Sri Lanka nine arches train Ella">
-                        <div class="instagram-overlay">
-                            <a href="https://www.instagram.com/p/DSxKnsKkwVI/" target="_blank" class="instagram-view-btn">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Post 2 -->
-                <div class="instagram-simple-item">
-                    <div class="instagram-image-container">
-                        <img src="https://scontent.cdninstagram.com/v/t51.82787-15/589204995_18328251391244147_8774370438143732633_n.webp?stp=c191.0.576.575a_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&amp;_nc_ohc=9E3DkBu-KecQ7kNvwFmUVZR&amp;_nc_oc=AdmoXbArBvLEMkLUy5Xdcl360cZRzLsvNUnXmbx5Zt-xvk3upz1LOjjT3CSRNVoQMoQ&amp;_nc_zt=23&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=kNm0MGibfTLGiQfeUbElSg&amp;oh=00_AfnrHSTzEJkiYs_UqbtrnRNbK4IiRs7kRObCQgtUMgEx_A&amp;oe=6955D965" alt="Sri Lanka Beach sunset">
-                        <div class="instagram-overlay">
-                            <a href="https://www.instagram.com/p/DSuCKQbE6Da/" target="_blank" class="instagram-view-btn">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Post 3 -->
-                <div class="instagram-simple-item">
-                    <div class="instagram-image-container">
-                        <img src="https://scontent.cdninstagram.com/v/t51.82787-15/605335442_18328257304244147_349910789691398169_n.webp?stp=c191.0.576.575a_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=108&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&amp;_nc_ohc=nSUcAM2aOG0Q7kNvwEeZGLy&amp;_nc_oc=AdkOojTK45nJ_N3ZjDzAA5mvvN6TXerYQmDQSsLNctJx2xRZE6HAeIR28hEUJ5gPC1Y&amp;_nc_zt=23&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=v0OI7VLF3PPwYWIX8U4avQ&amp;oh=00_AfnuljYTRDK2r9OnshdmzzpGpcKDzEm7EePH4qG1l8TELg&amp;oe=6955FCC9" alt="Sigiriya Lion's Rock">
-                        <div class="instagram-overlay">
-                            <a href="https://www.instagram.com/p/DSuMo8oE2t9/" target="_blank" class="instagram-view-btn">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Post 4 -->
-                <div class="instagram-simple-item">
-                    <div class="instagram-image-container">
-                        <img src="https://scontent.cdninstagram.com/v/t51.82787-15/605350197_18328257097244147_8275894470145733447_n.webp?stp=c191.0.576.575a_dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_pvKXU7VSK0Q7kNvwHLC7ZZ&_nc_oc=AdmR3gPM7ObYsQbgw4YCL10SgAFfG4DkqK9CeCeiOIYHPr1TUGPkVwH2eO3zU_I7jPM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=7dS54_PzacoYIT7TUkmF9Q&oh=00_Afnnzvfq4GFKLpT72SBIUzgUYwyVD3kh0eSVCglBUuw6rw&oe=69547525" alt="Sri Lanka temple">
-                        <div class="instagram-overlay">
-                            <a href="https://www.instagram.com/p/DSuMSlCk-2V/" target="_blank" class="instagram-view-btn">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <a href="https://www.instagram.com/srilankaphototours" target="_blank" rel="noopener noreferrer" class="instagram-link">
-                <i class="fab fa-instagram"></i> Follow us on Instagram
-            </a>
-        </div>
-    </section>
-
     <!-- Footer Section -->
     <footer>
         <div class="footer-content">
@@ -1798,74 +1430,6 @@
                     stopSlideShow();
                 }
             });
-            
-            // Instagram Logo Click Handler
-            const instagramLogo = document.querySelector('.instagram-logo');
-            const instagramLink = document.querySelector('.instagram-link');
-            
-            if (instagramLogo) {
-                instagramLogo.addEventListener('click', function() {
-                    window.open('https://www.instagram.com/srilankaphototours', '_blank');
-                });
-            }
-            
-            // Fix Instagram Image Display - Ensures whole images are visible
-            fixInstagramImages();
-            
-            // Function to fix Instagram image display
-            function fixInstagramImages() {
-                const instagramImages = document.querySelectorAll('.instagram-image-container img');
-                
-                instagramImages.forEach(img => {
-                    // Add error handling for broken images
-                    img.addEventListener('error', function() {
-                        console.log('Image failed to load:', this.src);
-                        // You could set a fallback image here if needed
-                    });
-                    
-                    // Ensure images display properly based on aspect ratio
-                    if (img.complete && img.naturalWidth > 0) {
-                        adjustImageDisplay(img);
-                    } else {
-                        img.addEventListener('load', function() {
-                            adjustImageDisplay(this);
-                        });
-                    }
-                });
-                
-                function adjustImageDisplay(image) {
-                    const container = image.parentElement;
-                    const imgWidth = image.naturalWidth;
-                    const imgHeight = image.naturalHeight;
-                    const aspectRatio = imgWidth / imgHeight;
-                    
-                    // Clear any existing classes
-                    container.classList.remove('landscape', 'portrait', 'square');
-                    
-                    // Add class based on aspect ratio
-                    if (aspectRatio > 1.2) {
-                        // Landscape image (wider than tall)
-                        container.classList.add('landscape');
-                        console.log('Landscape image:', imgWidth, 'x', imgHeight);
-                    } else if (aspectRatio < 0.8) {
-                        // Portrait image (taller than wide)
-                        container.classList.add('portrait');
-                        console.log('Portrait image:', imgWidth, 'x', imgHeight);
-                    } else {
-                        // Square or near-square image
-                        container.classList.add('square');
-                        console.log('Square image:', imgWidth, 'x', imgHeight);
-                    }
-                }
-            }
-            
-            // Instagram Image Click Handlers
-            const instagramImages = document.querySelectorAll('.instagram-view-btn');
-            instagramImages.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
-            });
         });
     </script>
     
@@ -1878,5 +1442,3 @@
 </a>
 </body>
 </html>
-
-
