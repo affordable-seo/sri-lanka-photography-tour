@@ -23,7 +23,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Voyage Photo Sri Lanka 2027 : Expédition de 13 jours avec Laurent Dambies</title>
 <meta name="description" content="Rejoignez le photographe Laurent Dambies pour un voyage exclusif de 13 jours. Capturez l'essence du Sri Lanka à travers 6 destinations en petit groupe. Réservez pour avril 2027.">
- <link rel="preload" href="/images/sri_lanka_map.webp" as="image" type="image/webp" fetchpriority="high">
+ <link rel="preload" href="/fr/images/carte_sri_lanka.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,12 +35,12 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Voyage Photo Sri Lanka 2027",
-  "image": "https://sri-lanka-photography-tour.vercel.app/images/sri-lanka-photo-tour-people-1.webp",
+  "image": "https://sri-lanka-photography-tour.vercel.app/fr/images/voyage-photo-sri-lanka-gens-1.webp",
   "description": "Une aventure photographique complète de 13 jours dirigée par Laurent Dambies, explorant les temples anciens, la vie locale authentique et les paysages magnifiques du Sri Lanka",
   "offers": {
     "@type": "Offer",
-    "priceCurrency": "USD",
-    "price": "5700",
+    "priceCurrency": "EUR",
+    "price": "4900",
     "itemCondition": "https://schema.org/NewCondition",
     "availability": "https://schema.org/InStock",
     "validFrom": "2027-01-01",
@@ -244,7 +244,7 @@ section { position: relative; }
       rgba(26, 22, 18, 0.35) 50%,
       rgba(26, 22, 18, 0.72) 100%
     ),
-    url('/images/sri_lanka_map.webp') no-repeat center center / cover;
+    url('/fr/images/carte_sri_lanka.webp') no-repeat center center / cover;
   background-attachment: fixed;
   text-align: center;
   padding: 2rem clamp(1.25rem, 5vw, 3rem);
@@ -652,7 +652,7 @@ section { position: relative; }
       rgba(26,22,18,0.86),
       rgba(26,22,18,0.72)
     ),
-    url('/images/sri-lanka-photo-tour-train-1.webp') no-repeat center center / cover;
+    url('fr/images/voyage-photo-sri-lanka-gens-1.webp') no-repeat center center / cover;
   background-attachment: fixed;
   padding: clamp(5rem, 10vw, 9rem) 0;
   text-align: center;
@@ -1014,7 +1014,7 @@ footer {
 
       <div class="about__visual reveal reveal--delay-2">
         <div class="about__image-frame">
-          <img src="/images/sri-lanka-photo-tour-people-1.webp" alt="Voyage Photo Sri Lanka — Peuple et Culture" loading="lazy">
+          <img src="/fr/images/voyage-photo-sri-lanka-gens-1.webp" alt="Voyage Photo Sri Lanka — Peuple et Culture" loading="lazy">
         </div>
         <div class="about__accent-box">
           <span class="big-num">4</span>
@@ -1212,19 +1212,19 @@ document.addEventListener('DOMContentLoaded', function () {
   const imageCollections = {
     temples: {
       title: 'Temples Anciens', count: 12,
-      images: Array.from({length: 12}, (_, i) => `/images/sri-lanka-temples-${i+1}.webp`)
+      images: Array.from({length: 12}, (_, i) => `/fr/images/voyage-photo-sri-lanka-temples-${i+1}.webp`)
     },
     people: {
       title: 'Peuple & Culture', count: 13,
-      images: Array.from({length: 13}, (_, i) => `/images/sri-lanka-photo-tour-people-${i+1}.webp`)
+      images: Array.from({length: 13}, (_, i) => `/fr/images/voyage-photo-sri-lanka-gens-${i+1}.webp`)
     },
     landscape: {
       title: 'Paysages & Nature', count: 11,
-      images: Array.from({length: 11}, (_, i) => `/images/sri-lanka-landscape-${i+1}.webp`)
+      images: Array.from({length: 11}, (_, i) => `/fr/images/voyage-photo-sri-lanka-paysages-${i+1}.webp`)
     },
     wildlife: {
       title: 'Vie Sauvage', count: 6,
-      images: Array.from({length: 6}, (_, i) => `/images/sri-lanka-wildlife-${i+1}.webp`)
+      images: Array.from({length: 6}, (_, i) => `/fr/images/voyage-photo-sri-lanka-faune-${i+1}.webp`)
     }
   };
 
