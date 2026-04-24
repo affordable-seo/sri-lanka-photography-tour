@@ -985,9 +985,96 @@ footer {
 .reveal--delay-2 { transition-delay: 0.2s; }
 .reveal--delay-3 { transition-delay: 0.3s; }
 .reveal--delay-4 { transition-delay: 0.4s; }
+
+/* ─── LANGUAGE SWITCHER ──────────────────────────────── */
+.lang-switcher {
+  position: fixed;
+  top: 1.1rem;
+  right: 1.25rem;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(26, 22, 18, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  padding: 0.3rem 0.45rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.55rem;
+  border-radius: 100px;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--ff-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.lang-btn:hover {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.95);
+}
+
+.lang-btn.active {
+  background: rgba(255,255,255,0.18);
+  color: #ffffff;
+}
+
+.lang-flag {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.lang-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .lang-switcher { top: 0.75rem; right: 0.75rem; padding: 0.25rem 0.35rem; }
+  .lang-btn { padding: 0.25rem 0.4rem; font-size: 0.68rem; }
+  .lang-flag { font-size: 1rem; }
+}
 </style>
 </head>
 <body>
+
+<!-- ══════════════ LANGUAGE SWITCHER ══════════════ -->
+<nav class="lang-switcher" aria-label="Language selection">
+  <a href="https://sri-lanka-photography-tour.vercel.app/"
+     class="lang-btn active"
+     id="lang-en"
+     aria-label="English version"
+     hreflang="en">
+    <span class="lang-flag">🇬🇧</span>
+    <span>EN</span>
+  </a>
+  <div class="lang-divider" aria-hidden="true"></div>
+  <a href="https://sri-lanka-photography-tour.vercel.app/fr/voyage-photo-sri-lanka"
+     class="lang-btn"
+     id="lang-fr"
+     aria-label="Version française"
+     hreflang="fr">
+    <span class="lang-flag">🇫🇷</span>
+    <span>FR</span>
+  </a>
+</nav>
 
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero">
@@ -1348,6 +1435,41 @@ document.addEventListener('DOMContentLoaded', function () {
   initSlideshow('people');
   startSlideShow();
 });
+
+/* ── Language auto-redirect ── */
+(function () {
+  const FR_URL = 'https://sri-lanka-photography-tour.vercel.app/fr/voyage-photo-sri-lanka';
+  const STORAGE_KEY = 'lang-choice';
+
+  // If user has already made a manual choice, respect it and just highlight active btn
+  const stored = sessionStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    document.getElementById('lang-' + stored)?.classList.add('active');
+    document.getElementById('lang-' + (stored === 'fr' ? 'en' : 'fr'))?.classList.remove('active');
+    return;
+  }
+
+  // Detect browser language
+  const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  if (lang.startsWith('fr')) {
+    sessionStorage.setItem(STORAGE_KEY, 'fr');
+    window.location.href = FR_URL;
+    return;
+  }
+
+  // Default: English page (current) — mark EN as active
+  sessionStorage.setItem(STORAGE_KEY, 'en');
+  document.getElementById('lang-en')?.classList.add('active');
+  document.getElementById('lang-fr')?.classList.remove('active');
+
+  // Track manual clicks so auto-redirect doesn't fight the user
+  document.getElementById('lang-en')?.addEventListener('click', function () {
+    sessionStorage.setItem(STORAGE_KEY, 'en');
+  });
+  document.getElementById('lang-fr')?.addEventListener('click', function () {
+    sessionStorage.setItem(STORAGE_KEY, 'fr');
+  });
+})();
 </script>
 
 </body>
