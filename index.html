@@ -1003,6 +1003,16 @@ footer {
   border-radius: 12px;
   padding: 0.45rem 0.5rem;
   box-shadow: 0 6px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: auto;
+}
+
+.lang-switcher.lang-hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
 }
 
 .lang-btn {
@@ -1142,7 +1152,8 @@ footer {
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero">
   <div class="hero__inner">
-     <h1>Sri Lanka<br><em>Photography Tour</em><br>2027</h1>
+    <span class="hero__eyebrow">Laurent Dambies · Angkor Photography Tours</span>
+    <h1>Sri Lanka<br><em>Photography Tour</em><br>2027</h1>
     <p class="hero__subtitle">An exclusive photography expedition capturing the essence of Sri Lanka</p>
 
     <div class="hero__pills">
@@ -1502,6 +1513,26 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
   const FR_URL = 'https://sri-lanka-photography-tour.vercel.app/fr/voyage-photo-sri-lanka';
   const STORAGE_KEY = 'lang-choice';
+  const switcher = document.querySelector('.lang-switcher');
+
+  // Auto-hide after 5 seconds, reappear on hover
+  let hideTimer = setTimeout(() => switcher.classList.add('lang-hidden'), 5000);
+
+  switcher.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimer);
+    switcher.classList.remove('lang-hidden');
+  });
+  switcher.addEventListener('mouseleave', () => {
+    hideTimer = setTimeout(() => switcher.classList.add('lang-hidden'), 2000);
+  });
+
+  // Touch devices: tap anywhere else to re-show briefly
+  document.addEventListener('touchstart', (e) => {
+    if (!switcher.contains(e.target)) return;
+    clearTimeout(hideTimer);
+    switcher.classList.remove('lang-hidden');
+    hideTimer = setTimeout(() => switcher.classList.add('lang-hidden'), 3000);
+  }, { passive: true });
 
   // If user has already made a manual choice, respect it and just highlight active btn
   const stored = sessionStorage.getItem(STORAGE_KEY);
