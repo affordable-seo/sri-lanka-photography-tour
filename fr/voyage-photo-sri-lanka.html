@@ -16,7 +16,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Voyage Photo Sri Lanka 2027 : Expédition de 13 jours avec Laurent Dambies</title>
-<meta name="description" content="Voyage Photo au Sri Lanka en Avril 2027 avec Laurent Dambies">
+<meta name="description" content="Rejoignez le photographe Laurent Dambies pour un voyage exclusif de 13 jours. Capturez l'essence du Sri Lanka à travers 6 destinations en petit groupe. Réservez pour avril 2027.">
  <link rel="preload" href="/fr/images/carte_sri_lanka.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
@@ -971,6 +971,16 @@ footer {
   border-radius: 12px;
   padding: 0.45rem 0.5rem;
   box-shadow: 0 6px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: auto;
+}
+
+.lang-switcher.lang-hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
 }
 
 .lang-btn {
@@ -1077,7 +1087,8 @@ footer {
 
 <section class="hero">
   <div class="hero__inner">
-        <h1>Voyage Photo<br><em>Sri Lanka</em><br>2027</h1>
+    <span class="hero__eyebrow">Laurent Dambies · Angkor Photography Tours</span>
+    <h1>Voyage Photo<br><em>Sri Lanka</em><br>2027</h1>
     <p class="hero__subtitle">Une expédition photographique exclusive capturant l'essence du Sri Lanka</p>
 
     <div class="hero__pills">
@@ -1421,6 +1432,26 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
   const EN_URL = 'https://sri-lanka-photography-tour.vercel.app/';
   const STORAGE_KEY = 'lang-choice';
+  const switcher = document.querySelector('.lang-switcher');
+
+  // Auto-hide after 5 seconds, reappear on hover
+  let hideTimer = setTimeout(() => switcher.classList.add('lang-hidden'), 5000);
+
+  switcher.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimer);
+    switcher.classList.remove('lang-hidden');
+  });
+  switcher.addEventListener('mouseleave', () => {
+    hideTimer = setTimeout(() => switcher.classList.add('lang-hidden'), 2000);
+  });
+
+  // Touch devices: tap on switcher to re-show briefly
+  document.addEventListener('touchstart', (e) => {
+    if (!switcher.contains(e.target)) return;
+    clearTimeout(hideTimer);
+    switcher.classList.remove('lang-hidden');
+    hideTimer = setTimeout(() => switcher.classList.add('lang-hidden'), 3000);
+  }, { passive: true });
 
   // Mark FR as active (already set in HTML, but ensure consistency)
   document.getElementById('lang-fr')?.classList.add('active');
@@ -1435,11 +1466,9 @@ document.addEventListener('DOMContentLoaded', function () {
     sessionStorage.setItem(STORAGE_KEY, 'fr');
   });
 
-  // If user arrives here but their stored preference is EN, send them back
-  // (only if they haven't manually chosen FR before)
+  // First visit — store FR as their choice since they're on the FR page
   const stored = sessionStorage.getItem(STORAGE_KEY);
   if (!stored) {
-    // First visit — store FR as their choice since they're on the FR page
     sessionStorage.setItem(STORAGE_KEY, 'fr');
   }
 })();
